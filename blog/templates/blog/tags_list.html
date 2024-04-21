@@ -1,0 +1,17 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    Теги
+{% endblock %}
+
+{% block content %}
+    <div class="mx-auto text-center col-4 block-text" id="post-content" style="font-family: 'Ubuntu', sans-serif;">
+    {% for tag in tags %}
+    <h3>
+        <a href="{{ tag.get_absolute_url }}" class="tag-link">
+            {{ tag.title }}
+        </a>
+    </h3>
+    {% endfor %}
+    </div>
+{% endblock %}

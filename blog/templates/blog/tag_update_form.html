@@ -1,0 +1,29 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    Редактировать тег `{{ tag.title }}`
+{% endblock %}
+
+{% block content %}
+<form  class="col-4 mx-auto" action="{{ tag.get_update_url }}" method="post">
+    {% csrf_token %}
+    <div id="post-content" class="post-create-form mx-auto" style="font-family: 'Ubuntu', sans-serif;">
+        <h3 style="margin-bottom: 30px; text-align: center;">
+            Редактировать тег
+        </h3>
+        <div style="margin-bottom: 10px;"><label for="{{ form.title.id_for_label }}">Заголовок</label>
+            {{ form.title }}
+        </div>
+        <div style="margin-bottom: 10px;"><label for="{{ form.content.id_for_label }}">URL-адрес тега</label>
+            {{ form.slug }}
+        </div>
+        <br>
+        <button type="button" name="button" class="btn btn-secondary" onclick="history.go(-1)">
+            Отмена
+        </button>
+        <button type="submit" name="button" class="btn btn-success">
+                Сохранить
+        </button>
+    </div>
+</form>
+{% endblock %}

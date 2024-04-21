@@ -1,0 +1,34 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    Войти | Регистрация
+{% endblock %}
+
+{% block content %}
+
+<form class="col-9 mx-auto" method="post" style="text-align: center; font-family: 'Ubuntu', sans-serif;">
+    {% csrf_token %}
+    <div id="post-content" class="mx-auto col-9 block-text">
+        <h3 style="margin-bottom: 20px;">
+            Войти или зарегистрироваться?
+        </h3>
+        <button type="button" name="button" class="btn btn-outline-success" onclick="redirectToLogin()">
+            Войти
+        </button>
+        <button type="button" name="button" class="btn btn-outline-success" onclick="redirectToRegister()">
+            Зарегистрироваться
+        </button>
+    </div>
+</form>
+
+<script>
+    function redirectToLogin() {
+        window.location.href = "/blog/login/";
+    }
+
+    function redirectToRegister() {
+        window.location.href = "/blog/register/";
+    }
+</script>
+
+{% endblock %}

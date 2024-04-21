@@ -1,0 +1,41 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    Войти в профиль
+{% endblock %}
+
+{% block content %}
+    <form class="col-6 mx-auto" method="post">
+        {% csrf_token %}
+        <div id="post-content" class="post-create-form mx-auto" style="font-family: 'Ubuntu', sans-serif;">
+            <h3 style="margin-bottom: 30px; text-align: center;">
+                Вход в профиль
+            </h3>
+            {% if form.non_field_errors %}
+                <div style="font-size: 14px; max-height: 50px; text-align: left;">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+            {% for field in form %}
+                <div style="margin-bottom: 10px;" class="form-group {% if field.errors %}has-error{% endif %}">
+                    <label class="form-label" for="{{ field.id_for_label }}">
+                        {{ field.label }}:
+                    </label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div style="font-size: 14px; max-height: 50px; text-align: left;">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <br>
+            <button type="button" name="button" class="btn btn-secondary" onclick="history.go(-1)">
+                Отмена
+            </button>
+            <button type="submit" name="button" class="btn btn-success">
+                Войти
+            </button>
+        </div>
+    </form>
+{% endblock %}

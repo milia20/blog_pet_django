@@ -1,0 +1,23 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    Удалить пост {{ post.title }}
+{% endblock %}
+
+{% block content %}
+    <form class="col-9 mx-auto" action="{{ post.get_delete_url }}" method="post" style="text-align: center; font-family: 'Ubuntu', sans-serif;">
+        {% csrf_token %}
+        <div id="post-content" class="mx-auto col-9 block-text" >
+        <h3>
+            Вы действительно хотите удалить пост
+            <p><span style="font-family: 'JetBrains Mono', monospace;">{{ post.title }}</span> ?</p>
+        </h3>
+        <button type="button" name="button" class="btn btn-secondary" onclick="history.go(-1)">
+            Отмена
+        </button>
+        <button type="submit" name="button" class="btn btn-danger">
+            Удалить
+        </button>
+        </div>
+    </form>
+{% endblock %}

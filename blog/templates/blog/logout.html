@@ -1,0 +1,30 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    Выйти из аккаунта
+{% endblock %}
+
+{% block content %}
+
+<form class="col-9 mx-auto" action="{% url 'logout_url' %}" method="post" style="text-align: center;">
+    {% csrf_token %}
+    <div id="post-content" class="mx-auto col-9 block-text">
+        <h3 style="margin-bottom: 20px; font-family: 'Ubuntu', sans-serif;">
+            Вы действительно хотите выйти?
+        </h3>
+        <button type="button" name="button" class="btn btn-secondary" onclick="history.go(-1)">
+            Отмена
+        </button>
+        <button type="submit" name="button" class="btn btn-danger" onclick="redirectToLogin()">
+            Выйти
+        </button>
+    </div>
+</form>
+
+<script>
+    function redirectToLogin() {
+        window.location.href = "/blog/login/";
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'blog/base_blog.html' %}
+
+{% block title %}
+    Создание поста
+{% endblock %}
+
+{% block content %}
+<form class="col-12 mx-auto" action="{% url 'post_create_url' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div id="post-content" class="mx-auto col-9 block-text" style="font-family: 'Ubuntu', sans-serif;">
+        <h3 style="margin-bottom: 30px; text-align: center;">
+            Создать новый пост
+        </h3>
+        <div class="post-create-form col-4">
+            <label for="{{ form.title.id_for_label }}">Заголовок</label>
+            {{ form.title }}
+        </div>
+        <div class="post-create-form col-4">
+            <label for="{{ form.content.id_for_label }}">URL-адрес поста</label>
+            {{ form.slug }}
+        </div>
+        <div class="post-create-form col-9">
+            <label for="{{ form.image.id_for_label }}">Содержание</label>
+            {{ form.body }}
+        </div>
+        <div class="post-create-form col-2">
+            <label for="{{ form.tags.id_for_label }}">Теги</label>
+            {{ form.tags }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.publish.id_for_label }}"><span style="font-size: 24px;">Изображение</span></label>
+            <p>{{ form.image }}</p>
+        </div>
+        <br>
+        <button type="button" name="button" class="btn btn-secondary" style="margin-top: 10px;" onclick="history.go(-1)">
+            Отмена
+        </button>
+        <button type="submit" class="btn btn-success" style="margin-top: 10px;">
+            Сохранить
+        </button>
+    </div>
+</form>
+{% endblock %}
