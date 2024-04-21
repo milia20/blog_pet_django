@@ -89,7 +89,7 @@ class TagForm(forms.ModelForm):
         fields: List[str] = ['title', 'slug']
 
         widgets: dict = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите загловок тега'}),
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите заголовок тега'}),
             'slug': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите уникальный адрес тега'})
         }
 
